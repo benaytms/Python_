@@ -1,9 +1,10 @@
 def get_count(sentence):
-    vowels = ['a', 'e', 'i', 'o', 'u']
+    vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
     letters = [x for x in sentence]
     sum = 0
     for i in range(len(letters)):
-        if letters[i] in vowels: sum += 1
+        if letters[i] in vowels: 
+            sum += 1
     return sum
 
 print(get_count('Nam in condimentum nunc. In sollicitudin ipsum eu arcu elementum, vel viverra purus iaculis. '
