@@ -8,7 +8,7 @@ def trapping_water(a: list[int]) -> int:
     # the beginning
     reversed_a: list[int] = a[::-1]
 
-    # size of the array, final index and total of water units respectively
+    # size of the array, final index and total water units respectively
     n: int = len(a)
     k: int = n - 1
     agua_total: int = 0
@@ -17,15 +17,14 @@ def trapping_water(a: list[int]) -> int:
     L2Rmaxs: list[int] = []
     R2Lmaxs: list[int] = []
 
-    # maximum height iteration value, starts as the first value for the list going left-right
-    # and starts at the final value for the list going right-left
+    # variable for the maximum height value for each iteration, starts as the first value for the list going left-right
+    # and the other starts at the final value for the list going right-left
     Lmax: int = a[0]
     Rmax: int = a[k]
 
     # initialize the lists putting the first values
     L2Rmaxs.append(Lmax)
     R2Lmaxs.append(Rmax)
-
 
     for i in range(1, n):
         
@@ -45,7 +44,7 @@ def trapping_water(a: list[int]) -> int:
     # now finally, one last iteration so it binds the water units with the 'agua_total' variable 
     for j in range(n):
         # this operation takes in account the smaller maximum height value (as explained at the end of this file) and subtracts
-        # from the current wall height, so it doesn't consider that there's water in places where there's a wall
+        # from the current wall height, so it doesn't consider that there's water in places where there's actually an elevation
         agua_total = agua_total + (min(R2Lmaxs[j], L2Rmaxs[j]) - a[j])
 
     # return with the total of water units
@@ -65,22 +64,26 @@ if __name__ == "__main__":
 '''
 Algorithm explanation:
 
-for this problem, the first thing we need to understand is that: if there's two walls with given heights
-to know how much water it will be in between them, we need to consider the minimum value of them;
+for this problem, the first thing we need to understand is that: if there's 2 walls with given heights,
+to know how much water it will be in between them, we need to consider the smaller height value between the 2 walls;
 
-i.g if you have a wall with 3m and another of 2m, the water can't be more than 2m tall because it'll overflow
-this means that between 2 maximum heights, one considering a pointer coming from left to right and another from right to left
-we'll always consider the minimum value between them.
+i.g if you have a wall with 3m and another of 2m, the water between them can't be more than 2m tall because it overflows.
 
-Another thing we must consider is the current wall height in a place, let's say we have a wall of 2m on the left, elevation of 1m
-from the base and a wall of 3m on the right - we'll first consider the 2m wall as maximum water reach and remove the 1m elevation.
+This means that between 2 maximum heights, one considering values from the left and another values from the right,
+we'll always consider the smaller value between them.
 
-So basically, we'll have 2 maximum heights in every point, one starting from the beginning and one from the ending.
-Why's that? because we need to verify if up to that point on the array of heights, that height of that ith wall is
-really the maximum the water can reach. Let's say we consider a height of 3m as the maximum height, 
-and due to that we presume the water can reach 3m, but then we find that there's no other wall of 3m in the array, this means we
-the water container is 3m from the left but from the right the maximum is just let's 1m. The water should overflow and have
+Another thing we must consider is the the elevation height between 2 walls; 
+Let's say we have a wall of 2m on the left, an elevation of 1m and a wall of 3m on the right;
+we'll first consider the 2m wall as maximum water reach and remove the 1m elevation. Then there'll be 1m of water.
+
+
+So basically, we'll have 2 maximum heights in every point, one considering values coming from the left and other from the right.
+Why's that? because we need to verify up to that point the maximum height the water can reach, and that can
+be values from the left and values from the right.
+
+Let's say we only check for a maximum height coming from the left, we find a height of 3m as the maximum height, 
+and we presume the water can reach 3m, but then we find that there's no other wall of 3m in the array, this means
+the water container is 3m from the left but from the right the maximum is just, let's say, 1m. The water should overflow and have
 1m as height, not 3. Therefore that's the reason why we use 2 pointers of maximum heights.
-
 
 '''
