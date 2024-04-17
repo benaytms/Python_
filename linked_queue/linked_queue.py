@@ -177,14 +177,14 @@ def main():
     print(calling.quotes['c'])
 
     # already made queue
-    Fila.insert_at_beginning('Maria')
-    Fila.insert_at_end('Carlos')
-    Fila.insert_at_end('Mel')
-    Fila.insert_at_end('Jose')
+    # Fila.insert_at_beginning('Maria')
+    # Fila.insert_at_end('Carlos')
+    # Fila.insert_at_end('Mel')
+    # Fila.insert_at_end('Jose')
 
     people_count: int = 1
 
-    while 0:
+    while 1:
 
         print(people_count, calling.quotes['q2'])
         name = str(input())
