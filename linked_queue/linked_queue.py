@@ -98,7 +98,8 @@ class line:
         if index == 0:
             if self.head:
                 self.head = self.head.next
-                self.head.prev = None
+                if self.head:
+                    self.head.prev = None
             return
 
         count = 0
