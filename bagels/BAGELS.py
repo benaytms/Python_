@@ -1,3 +1,6 @@
+# Credits: Big book small python projects
+# game from Al Sweigart.
+
 import random
 
 NUM_DIGITS = 3
@@ -5,7 +8,7 @@ MAX_GUESSES = 10
 
 def introduction() -> None:
     print('''Bagels, a deductive logic game.
-By AL Sweigart.
+By Al Sweigart.
           
 I am thinking of a {}-digit number with no repeated digits.
 Try to guess which number it is. Here are some clues:
