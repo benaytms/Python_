@@ -84,7 +84,7 @@ def getClue(guess, secretNum):
         return ' '.join(clues)
     
 
-def main_caller():
+def main_caller() -> None:
     game_itself()
 
 if __name__ == "__main__":
